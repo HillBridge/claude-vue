@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { useAuthStore } from '@stores/index'
 import { useForm } from '@composables/core/useForm'
+import { useAuthStore } from '@stores/index'
+import { computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 const router = useRouter()
 const route = useRoute()
@@ -12,7 +12,10 @@ const { form, errors, submitting, validate } = useForm(
   { username: '', password: '' },
   {
     username: [{ required: true, message: '请输入用户名' }],
-    password: [{ required: true, message: '请输入密码' }, { min: 6, message: '密码至少6位' }],
+    password: [
+      { required: true, message: '请输入密码' },
+      { min: 6, message: '密码至少6位' },
+    ],
   },
 )
 
@@ -63,11 +66,7 @@ async function handleLogin() {
           <span v-if="errors.password" class="form-error">{{ errors.password }}</span>
         </div>
 
-        <button
-          type="submit"
-          :disabled="submitting"
-          class="submit-btn w-full"
-        >
+        <button type="submit" :disabled="submitting" class="submit-btn w-full">
           {{ submitting ? '登录中...' : '登录' }}
         </button>
       </form>
