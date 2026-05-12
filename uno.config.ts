@@ -1,8 +1,8 @@
 import {
   defineConfig,
-  presetUno,
   presetAttributify,
   presetIcons,
+  presetUno,
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
@@ -14,9 +14,6 @@ export default defineConfig({
     presetIcons({
       scale: 1.2,
       warn: true,
-      collections: {
-        lucide: () => import('@iconify-json/lucide/icons.json').then((i) => i.default),
-      },
     }),
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
@@ -36,7 +33,10 @@ export default defineConfig({
     ['text-disabled', 'text-[var(--color-text-disabled)]'],
 
     // Containers
-    ['card', 'bg-[var(--color-bg-container)] rounded-[var(--radius-lg)] shadow-[var(--shadow-sm)] p-4'],
+    [
+      'card',
+      'bg-[var(--color-bg-container)] rounded-[var(--radius-lg)] shadow-[var(--shadow-sm)] p-4',
+    ],
     ['page-container', 'p-6 h-full overflow-auto'],
   ],
 
@@ -55,7 +55,10 @@ export default defineConfig({
     },
     keyframes: {
       fadeIn: { from: { opacity: '0' }, to: { opacity: '1' } },
-      slideUp: { from: { opacity: '0', transform: 'translateY(10px)' }, to: { opacity: '1', transform: 'translateY(0)' } },
+      slideUp: {
+        from: { opacity: '0', transform: 'translateY(10px)' },
+        to: { opacity: '1', transform: 'translateY(0)' },
+      },
     },
   },
 

@@ -48,6 +48,17 @@ export const asyncRoutes: AppRouteRecordRaw[] = [
           requiresAuth: true,
         },
       },
+      {
+        path: 'users',
+        name: 'UserList',
+        component: () => import('@pages/dashboard/UserListPage.vue'),
+        meta: {
+          title: '用户管理',
+          icon: 'i-lucide-users',
+          keepAlive: true,
+          requiresAuth: true,
+        },
+      },
     ],
   },
   {

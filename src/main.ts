@@ -1,18 +1,23 @@
+import { VueQueryPlugin } from '@tanstack/vue-query'
+import 'virtual:uno.css'
 import { createApp } from 'vue'
 import App from './App.vue'
-import { router } from './router'
-import { pinia, useAuthStore, useAppStore, initAuthStore } from './stores'
+import './assets/styles/global.css'
+import './assets/styles/variables/tokens.css'
 import { setupDirectives } from './directives'
 import { setupErrorMonitor } from './plugins/errorMonitor'
-import 'virtual:uno.css'
-import './assets/styles/variables/tokens.css'
-import './assets/styles/global.css'
+import { queryClient } from './plugins/queryClient'
+import { router } from './router'
+import { initAuthStore, pinia, useAppStore, useAuthStore } from './stores'
 
 async function bootstrap() {
   const app = createApp(App)
 
   // 注册 Pinia（必须在使用 store 之前）
   app.use(pinia)
+
+  // 注册 Vue Query（传入预配置的 queryClient）
+  app.use(VueQueryPlugin, { queryClient })
 
   // 初始化 auth store 实例供非组件上下文使用
   const authStore = useAuthStore()

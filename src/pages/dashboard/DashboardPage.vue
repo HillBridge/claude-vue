@@ -2,6 +2,21 @@
 defineOptions({ name: 'DashboardPage' })
 </script>
 
+<script lang="ts">
+const statCards = [
+  { title: '总用户数', value: '12,450', icon: 'i-lucide-users', color: 'var(--primary-color)' },
+  { title: '今日访问', value: '3,218', icon: 'i-lucide-eye', color: 'var(--success-color)' },
+  { title: '待处理', value: '42', icon: 'i-lucide-clock', color: 'var(--warning-color)' },
+  { title: '异常告警', value: '3', icon: 'i-lucide-alert-circle', color: 'var(--error-color)' },
+]
+
+export default {
+  setup() {
+    return { statCards }
+  },
+}
+</script>
+
 <template>
   <div class="page-container">
     <h1 class="text-2xl font-semibold mb-6">控制台</h1>
@@ -18,14 +33,3 @@ defineOptions({ name: 'DashboardPage' })
     </div>
   </div>
 </template>
-
-<script lang="ts">
-const statCards = [
-  { title: '总用户数', value: '12,450', icon: 'i-lucide-users', color: 'var(--primary-color)' },
-  { title: '今日访问', value: '3,218', icon: 'i-lucide-eye', color: 'var(--success-color)' },
-  { title: '待处理', value: '42', icon: 'i-lucide-clock', color: 'var(--warning-color)' },
-  { title: '异常告警', value: '3', icon: 'i-lucide-alert-circle', color: 'var(--error-color)' },
-]
-
-export default { setup() { return { statCards } } }
-</script>
