@@ -1,13 +1,11 @@
 <script setup lang="ts">
+import ErrorBoundary from '@components/base/ErrorBoundary.vue'
+import { useTabsStore } from '@stores/index'
 import { computed } from 'vue'
 import { RouterView } from 'vue-router'
-import { useTabsStore } from '@stores/index'
-import ErrorBoundary from '@components/base/ErrorBoundary.vue'
 
 const tabsStore = useTabsStore()
-const keepAliveRoutes = computed(() =>
-  tabsStore.tabs.filter((t) => t.keepAlive).map((t) => t.name),
-)
+const keepAliveRoutes = computed(() => tabsStore.tabs.filter((t) => t.keepAlive).map((t) => t.name))
 </script>
 
 <template>

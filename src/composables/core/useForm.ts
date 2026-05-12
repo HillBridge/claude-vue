@@ -1,5 +1,5 @@
-import { ref, reactive, watch } from 'vue'
 import type { Ref } from 'vue'
+import { reactive, ref, watch } from 'vue'
 
 interface FormRule {
   required?: boolean

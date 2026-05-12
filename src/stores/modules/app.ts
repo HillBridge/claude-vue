@@ -1,7 +1,7 @@
-import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
-import { useMediaQuery } from '@vueuse/core'
 import type { AppSettings } from '@types/store'
+import { useMediaQuery } from '@vueuse/core'
+import { defineStore } from 'pinia'
+import { computed, ref } from 'vue'
 
 type Theme = 'light' | 'dark' | 'system'
 type Language = 'zh' | 'en'

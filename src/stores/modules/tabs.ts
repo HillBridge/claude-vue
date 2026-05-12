@@ -54,7 +54,13 @@ export const useTabsStore = defineStore('tabs', () => {
     activeTab.value = tabs.value[0]?.path ?? ''
   }
 
-  function initAffixTabs(routes: { path: string; name: string; meta: { title?: string; affix?: boolean; icon?: string } }[]) {
+  function initAffixTabs(
+    routes: {
+      path: string
+      name: string
+      meta: { title?: string; affix?: boolean; icon?: string }
+    }[],
+  ) {
     routes
       .filter((r) => r.meta.affix && r.meta.title)
       .forEach((r) => {
@@ -62,6 +68,7 @@ export const useTabsStore = defineStore('tabs', () => {
           tabs.value.unshift({
             path: r.path,
             name: r.name,
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             title: r.meta.title!,
             icon: r.meta.icon,
             affix: true,

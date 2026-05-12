@@ -1,6 +1,6 @@
 import type { App } from 'vue'
-import { vPermission, vRole } from './permission'
 import { vLoading } from './loading'
+import { vPermission, vRole } from './permission'
 
 export function setupDirectives(app: App) {
   app.directive('permission', vPermission)

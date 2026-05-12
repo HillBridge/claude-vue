@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
 import { useAppStore } from '@stores/index'
+import { RouterView } from 'vue-router'
 
 const appStore = useAppStore()
 </script>
@@ -29,7 +29,11 @@ const appStore = useAppStore()
           :title="appStore.sidebarCollapsed ? '展开侧边栏' : '折叠侧边栏'"
           @click="appStore.toggleSidebar"
         >
-          <span :class="appStore.sidebarCollapsed ? 'i-lucide-panel-left-open' : 'i-lucide-panel-left-close'" />
+          <span
+            :class="
+              appStore.sidebarCollapsed ? 'i-lucide-panel-left-open' : 'i-lucide-panel-left-close'
+            "
+          />
         </button>
 
         <div class="flex-1" />
@@ -126,7 +130,9 @@ const appStore = useAppStore()
   cursor: pointer;
   color: var(--color-text-secondary);
   font-size: 18px;
-  transition: background var(--transition-fast), color var(--transition-fast);
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
 
   &:hover {
     background: var(--color-bg-layout);

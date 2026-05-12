@@ -1,7 +1,7 @@
-import type { Router } from 'vue-router'
-import { useAuthStore, useAppStore } from '@stores/index'
+import { useAppStore, useAuthStore } from '@stores/index'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+import type { Router } from 'vue-router'
 
 NProgress.configure({ showSpinner: false })
 
@@ -15,7 +15,9 @@ export function setupRouterGuards(router: Router) {
     const appStore = useAppStore()
 
     // 设置页面标题
-    document.title = to.meta.title ? `${to.meta.title} - ${import.meta.env.VITE_APP_TITLE}` : import.meta.env.VITE_APP_TITLE
+    document.title = to.meta.title
+      ? `${to.meta.title} - ${import.meta.env.VITE_APP_TITLE}`
+      : import.meta.env.VITE_APP_TITLE
 
     // 白名单直接放行
     if (WHITE_LIST.includes(to.path)) {
@@ -59,7 +61,7 @@ export function setupRouterGuards(router: Router) {
     next()
   })
 
-  router.afterEach((to) => {
+  router.afterEach((_to) => {
     NProgress.done()
     const tabsStore = useAppStore()
     void tabsStore

@@ -1,6 +1,6 @@
-import { http } from '../request'
 import type { ApiResponse, PageParams, PageResult } from '@types/api'
 import type { UserInfo } from '@types/store'
+import { http } from '../request'
 
 export interface LoginParams {
   username: string
@@ -35,7 +35,9 @@ export const authApi = {
   updatePassword: (params: { oldPassword: string; newPassword: string }) =>
     http.put<ApiResponse<void>>('/auth/user/password', params),
 
-  getCaptcha: () => http.get<ApiResponse<{ key: string; image: string }>>('/auth/captcha', { withAuth: false }),
+  getCaptcha: () =>
+    http.get<ApiResponse<{ key: string; image: string }>>('/auth/captcha', { withAuth: false }),
 
-  getUserList: (params: PageParams) => http.get<ApiResponse<PageResult<UserInfo>>>('/auth/users', { params }),
+  getUserList: (params: PageParams) =>
+    http.get<ApiResponse<PageResult<UserInfo>>>('/auth/users', { params }),
 }

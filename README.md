@@ -133,7 +133,16 @@ tests/
 <type>: <subject>
 ```
 
-常用 type：`feat` / `fix` / `chore` / `refactor` / `test` / `docs`
+常用 type：
+
+| type       | 含义                                                   |
+| ---------- | ------------------------------------------------------ |
+| `feat`     | 新功能                                                 |
+| `fix`      | 修复 bug                                               |
+| `chore`    | 不影响业务逻辑的维护性工作（升级依赖、修改构建配置等） |
+| `refactor` | 重构，既不是新功能也不是修 bug                         |
+| `test`     | 新增或修改测试                                         |
+| `docs`     | 只改文档（README、注释等）                             |
 
 推荐使用 `pnpm commit` 交互式填写。
 

@@ -42,6 +42,7 @@ function createWrapper(component: ReturnType<typeof defineComponent>) {
 
 describe('useUserInfoQuery', () => {
   it('解包后直接返回业务数据', async () => {
+    // eslint-disable-next-line vue/one-component-per-file
     const Comp = defineComponent({
       setup() {
         const { data, isLoading } = useUserInfoQuery()
@@ -58,6 +59,7 @@ describe('useUserInfoQuery', () => {
 
 describe('useUserListQuery', () => {
   it('分页参数变化时 queryKey 包含新参数', async () => {
+    // eslint-disable-next-line vue/one-component-per-file
     const Comp = defineComponent({
       setup() {
         const params = ref({ page: 1, pageSize: 10 })

@@ -1,11 +1,11 @@
-import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import UnoCSS from 'unocss/vite'
 import { resolve } from 'path'
 import { visualizer } from 'rollup-plugin-visualizer'
-import viteCompression from 'vite-plugin-compression'
+import UnoCSS from 'unocss/vite'
 import type { ConfigEnv, UserConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
+import viteCompression from 'vite-plugin-compression'
 
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, process.cwd(), '')
@@ -102,9 +102,11 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
           chunkFileNames: 'assets/js/[name]-[hash].js',
           entryFileNames: 'assets/js/[name]-[hash].js',
           assetFileNames: ({ name }) => {
-            if (/\.(gif|jpe?g|png|svg|webp)$/i.test(name ?? '')) return 'assets/images/[name]-[hash][extname]'
+            if (/\.(gif|jpe?g|png|svg|webp)$/i.test(name ?? ''))
+              return 'assets/images/[name]-[hash][extname]'
             if (/\.css$/i.test(name ?? '')) return 'assets/css/[name]-[hash][extname]'
-            if (/\.(woff2?|eot|ttf|otf)$/i.test(name ?? '')) return 'assets/fonts/[name]-[hash][extname]'
+            if (/\.(woff2?|eot|ttf|otf)$/i.test(name ?? ''))
+              return 'assets/fonts/[name]-[hash][extname]'
             return 'assets/[name]-[hash][extname]'
           },
         },

@@ -9,7 +9,7 @@ services:
     image: vue-enterprise-app:latest
     container_name: vue-frontend
     ports:
-      - "80:80"
+      - '80:80'
     environment:
       - NODE_ENV=production
     depends_on:
@@ -18,7 +18,7 @@ services:
     networks:
       - app-network
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost/health"]
+      test: ['CMD', 'wget', '-qO-', 'http://localhost/health']
       interval: 30s
       timeout: 5s
       retries: 3
@@ -28,7 +28,7 @@ services:
     image: your-backend-image:latest
     container_name: app-backend
     expose:
-      - "3000"
+      - '3000'
     environment:
       - NODE_ENV=production
       - DATABASE_URL=${DATABASE_URL}

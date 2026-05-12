@@ -15,13 +15,19 @@ export function deepClone<T>(obj: T): T {
   return clone
 }
 
-export function omit<T extends Record<string, unknown>, K extends keyof T>(obj: T, keys: K[]): Omit<T, K> {
+export function omit<T extends Record<string, unknown>, K extends keyof T>(
+  obj: T,
+  keys: K[],
+): Omit<T, K> {
   const result = { ...obj }
   keys.forEach((key) => delete result[key])
   return result as Omit<T, K>
 }
 
-export function pick<T extends Record<string, unknown>, K extends keyof T>(obj: T, keys: K[]): Pick<T, K> {
+export function pick<T extends Record<string, unknown>, K extends keyof T>(
+  obj: T,
+  keys: K[],
+): Pick<T, K> {
   return keys.reduce(
     (acc, key) => {
       if (key in obj) acc[key] = obj[key]
@@ -31,7 +37,10 @@ export function pick<T extends Record<string, unknown>, K extends keyof T>(obj: 
   )
 }
 
-export function debounce<T extends (...args: unknown[]) => unknown>(fn: T, delay = 300): (...args: Parameters<T>) => void {
+export function debounce<T extends (...args: unknown[]) => unknown>(
+  fn: T,
+  delay = 300,
+): (...args: Parameters<T>) => void {
   let timer: ReturnType<typeof setTimeout>
   return (...args: Parameters<T>) => {
     clearTimeout(timer)
@@ -39,7 +48,10 @@ export function debounce<T extends (...args: unknown[]) => unknown>(fn: T, delay
   }
 }
 
-export function throttle<T extends (...args: unknown[]) => unknown>(fn: T, interval = 300): (...args: Parameters<T>) => void {
+export function throttle<T extends (...args: unknown[]) => unknown>(
+  fn: T,
+  interval = 300,
+): (...args: Parameters<T>) => void {
   let lastTime = 0
   return (...args: Parameters<T>) => {
     const now = Date.now()

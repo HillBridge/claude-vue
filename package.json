@@ -14,7 +14,7 @@
     "build:staging": "vue-tsc -b && vite build --mode staging",
     "preview": "vite preview",
     "lint": "eslint . --fix",
-    "lint:check": "eslint .",
+    "lint:check": "NODE_ENV=production eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "type-check": "vue-tsc --noEmit",

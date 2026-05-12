@@ -15,6 +15,6 @@ pinia.use(
   }),
 )
 
-export { useAuthStore, initAuthStore } from './modules/auth'
 export { useAppStore } from './modules/app'
+export { initAuthStore, useAuthStore } from './modules/auth'
 export { useTabsStore } from './modules/tabs'

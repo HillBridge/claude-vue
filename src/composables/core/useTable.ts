@@ -1,6 +1,6 @@
-import { ref, computed, watch } from 'vue'
+import type { ApiResponse, PageParams, PageResult } from '@types/api'
 import type { Ref } from 'vue'
-import type { PageParams, PageResult, ApiResponse } from '@types/api'
+import { computed, ref, watch } from 'vue'
 
 type FetchFn<T> = (params: PageParams) => Promise<{ data: ApiResponse<PageResult<T>> }>
 

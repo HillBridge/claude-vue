@@ -1,5 +1,5 @@
-import type { Directive, DirectiveBinding } from 'vue'
 import { useAuthStore } from '@stores/index'
+import type { Directive, DirectiveBinding } from 'vue'
 
 // v-permission="'user:create'"
 // v-permission="['user:create', 'user:update']"

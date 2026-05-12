@@ -25,20 +25,27 @@ body {
 a {
   color: var(--primary-color);
   text-decoration: none;
-  &:hover { color: var(--primary-hover); }
+  &:hover {
+    color: var(--primary-hover);
+  }
 }
 
-img, svg {
+img,
+svg {
   display: block;
   max-width: 100%;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-family: inherit;
   font-size: inherit;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -55,7 +62,9 @@ ul, ol {
 ::-webkit-scrollbar-thumb {
   background: var(--color-border);
   border-radius: var(--radius-full);
-  &:hover { background: var(--color-text-tertiary); }
+  &:hover {
+    background: var(--color-text-tertiary);
+  }
 }
 
 /* Loading Mask */
@@ -87,7 +96,9 @@ ul, ol {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* NProgress custom */
@@ -96,13 +107,17 @@ ul, ol {
 }
 
 #nprogress .peg {
-  box-shadow: 0 0 10px var(--primary-color), 0 0 5px var(--primary-color) !important;
+  box-shadow:
+    0 0 10px var(--primary-color),
+    0 0 5px var(--primary-color) !important;
 }
 
 /* Page transition */
 .page-enter-active,
 .page-leave-active {
-  transition: opacity var(--transition-base), transform var(--transition-base);
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base);
 }
 
 .page-enter-from {

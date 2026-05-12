@@ -1,11 +1,16 @@
+import { router } from '@router/index'
+import { useAuthStoreOutside } from '@stores/modules/auth'
+import type { ApiResponse } from '@types/api'
+import { logger } from '@utils/logger'
+import type {
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from 'axios'
 import axios from 'axios'
 import axiosRetry from 'axios-retry'
-import type { AxiosInstance, AxiosRequestConfig, InternalAxiosRequestConfig, AxiosResponse } from 'axios'
-import type { ApiResponse } from '@types/api'
-import { useAuthStoreOutside } from '@stores/modules/auth'
-import { router } from '@router/index'
-import { logger } from '@utils/logger'
-import { RequestError, BusinessError } from './errors'
+import { BusinessError, RequestError } from './errors'
 
 export interface RequestConfig extends AxiosRequestConfig {
   // 是否显示全局 loading
@@ -29,6 +34,7 @@ function getRequestKey(config: InternalAxiosRequestConfig): string {
 function addPendingRequest(config: InternalAxiosRequestConfig) {
   const key = getRequestKey(config)
   if (pendingRequests.has(key)) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const controller = pendingRequests.get(key)!
     controller.abort()
     pendingRequests.delete(key)
@@ -87,7 +93,10 @@ export function createRequest(baseConfig: RequestConfig = {}): AxiosInstance {
       removePendingRequest(response.config as InternalAxiosRequestConfig)
       const { data } = response
 
-      if (data.success === false || (data.code !== undefined && data.code !== 200 && data.code !== 0)) {
+      if (
+        data.success === false ||
+        (data.code !== undefined && data.code !== 200 && data.code !== 0)
+      ) {
         throw new BusinessError(data.message, data.code)
       }
 

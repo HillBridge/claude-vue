@@ -1,5 +1,5 @@
-import type { App } from 'vue'
 import { logger } from '@utils/logger'
+import type { App } from 'vue'
 
 interface ErrorMonitorOptions {
   dsn?: string
@@ -46,15 +46,19 @@ export function setupErrorMonitor(app: App, options: ErrorMonitorOptions = {}) {
   })
 
   // 资源加载错误
-  window.addEventListener('error', (event) => {
-    if (event.target && event.target !== window) {
-      const target = event.target as HTMLElement
-      logger.warn('Resource load error', {
-        tag: target.tagName,
-        src: (target as HTMLImageElement).src || (target as HTMLScriptElement).src,
-      })
-    }
-  }, true)
+  window.addEventListener(
+    'error',
+    (event) => {
+      if (event.target && event.target !== window) {
+        const target = event.target as HTMLElement
+        logger.warn('Resource load error', {
+          tag: target.tagName,
+          src: (target as HTMLImageElement).src || (target as HTMLScriptElement).src,
+        })
+      }
+    },
+    true,
+  )
 }
 
 function reportToMonitor(error: Error, context: Record<string, unknown>) {

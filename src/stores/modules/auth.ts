@@ -1,8 +1,8 @@
-import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
-import type { UserInfo, AuthState } from '@types/store'
 import { authApi } from '@api/modules/auth'
+import type { UserInfo } from '@types/store'
 import { storage } from '@utils/storage'
+import { defineStore } from 'pinia'
+import { computed, ref } from 'vue'
 
 const TOKEN_KEY = 'access_token'
 const REFRESH_TOKEN_KEY = 'refresh_token'
@@ -27,7 +27,8 @@ export const useAuthStore = defineStore(
 
     const isAuthenticated = computed(() => !!accessToken.value)
     const hasRole = (role: string) => user.value?.roles.includes(role) ?? false
-    const hasPermission = (permission: string) => user.value?.permissions.includes(permission) ?? false
+    const hasPermission = (permission: string) =>
+      user.value?.permissions.includes(permission) ?? false
     const hasAnyPermission = (permissions: string[]) =>
       permissions.some((p) => user.value?.permissions.includes(p))
     const hasAllPermissions = (permissions: string[]) =>

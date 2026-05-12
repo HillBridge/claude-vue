@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { expect, test } from '@playwright/test'
 
 test.describe('登录页面', () => {
   test.beforeEach(async ({ page }) => {

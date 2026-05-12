@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, onErrorCaptured } from 'vue'
 import { logger } from '@utils/logger'
+import { onErrorCaptured, ref } from 'vue'
 
 interface Props {
   fallback?: string
@@ -16,7 +16,11 @@ onErrorCaptured((error: Error, instance, info) => {
   hasError.value = true
   errorMessage.value = error.message
   errorStack.value = error.stack ?? ''
-  logger.error('ErrorBoundary caught error', { error: error.message, info, component: instance?.$options.name })
+  logger.error('ErrorBoundary caught error', {
+    error: error.message,
+    info,
+    component: instance?.$options.name,
+  })
 
   // 上报到监控系统
   reportError(error, { info })

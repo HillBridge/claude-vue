@@ -5,9 +5,7 @@ export function usePermission() {
 
   function can(permission: string | string[], requireAll = false): boolean {
     const perms = Array.isArray(permission) ? permission : [permission]
-    return requireAll
-      ? authStore.hasAllPermissions(perms)
-      : authStore.hasAnyPermission(perms)
+    return requireAll ? authStore.hasAllPermissions(perms) : authStore.hasAnyPermission(perms)
   }
 
   function hasRole(role: string | string[]): boolean {

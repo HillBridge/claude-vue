@@ -1,13 +1,33 @@
-import { http, HttpResponse, delay } from 'msw'
+import { delay, http, HttpResponse } from 'msw'
 
 const mockUsers = [
-  { id: '1', username: 'admin', nickname: '管理员', roles: ['admin'], permissions: ['user:list', 'user:create', 'user:update', 'user:delete'], avatar: '', email: 'admin@example.com', phone: '13800138000', createdAt: '2024-01-01' },
-  { id: '2', username: 'editor', nickname: '编辑', roles: ['editor'], permissions: ['user:list'], avatar: '', email: 'editor@example.com', phone: '13800138001', createdAt: '2024-01-02' },
+  {
+    id: '1',
+    username: 'admin',
+    nickname: '管理员',
+    roles: ['admin'],
+    permissions: ['user:list', 'user:create', 'user:update', 'user:delete'],
+    avatar: '',
+    email: 'admin@example.com',
+    phone: '13800138000',
+    createdAt: '2024-01-01',
+  },
+  {
+    id: '2',
+    username: 'editor',
+    nickname: '编辑',
+    roles: ['editor'],
+    permissions: ['user:list'],
+    avatar: '',
+    email: 'editor@example.com',
+    phone: '13800138001',
+    createdAt: '2024-01-02',
+  },
 ]
 
 export const authHandlers = [
   http.post('/api/auth/login', async ({ request }) => {
-    const body = await request.json() as { username: string; password: string }
+    const body = (await request.json()) as { username: string; password: string }
     await delay(300)
 
     if (body.username === 'admin' && body.password === 'password123') {
@@ -32,7 +52,13 @@ export const authHandlers = [
 
   http.post('/api/auth/logout', async () => {
     await delay(100)
-    return HttpResponse.json({ code: 200, success: true, message: 'ok', timestamp: Date.now(), data: null })
+    return HttpResponse.json({
+      code: 200,
+      success: true,
+      message: 'ok',
+      timestamp: Date.now(),
+      data: null,
+    })
   }),
 
   http.get('/api/auth/user/info', () => {
