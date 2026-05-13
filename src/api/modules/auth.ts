@@ -1,5 +1,5 @@
-import type { ApiResponse, PageParams, PageResult } from '@types/api'
-import type { UserInfo } from '@types/store'
+import type { ApiResponse, PageParams, PageResult } from '@model/api'
+import type { UserInfo } from '@model/store'
 import { http } from '../request'
 
 export interface LoginParams {

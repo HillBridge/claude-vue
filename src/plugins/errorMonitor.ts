@@ -12,20 +12,20 @@ export function setupErrorMonitor(app: App, options: ErrorMonitorOptions = {}) {
   if (!enabled) return
 
   // Vue 全局错误处理
-  app.config.errorHandler = (error, instance, info) => {
+  app.config.errorHandler = (error, _instance, info) => {
     const err = error instanceof Error ? error : new Error(String(error))
     logger.error('Vue global error', {
       message: err.message,
       stack: err.stack,
       info,
-      component: instance?.$options.name,
+      component: _instance?.$options.name,
     })
     reportToMonitor(err, { type: 'vue', info })
   }
 
   // Vue 全局警告处理（仅开发环境）
   if (import.meta.env.DEV) {
-    app.config.warnHandler = (msg, instance, trace) => {
+    app.config.warnHandler = (msg, _instance, trace) => {
       logger.warn('Vue warning', { msg, trace })
     }
   }

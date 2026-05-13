@@ -1,4 +1,4 @@
-import type { PageParams } from '@types/api'
+import type { PageParams } from '@model/api'
 
 /**
  * Query Key Factory

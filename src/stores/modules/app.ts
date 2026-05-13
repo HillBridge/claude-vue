@@ -1,4 +1,4 @@
-import type { AppSettings } from '@types/store'
+import type { AppSettings } from '@model/store'
 import { useMediaQuery } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
@@ -93,7 +93,7 @@ export const useAppStore = defineStore(
   },
   {
     persist: {
-      paths: ['theme', 'language', 'sidebarCollapsed', 'settings'],
+      pick: ['theme', 'language', 'sidebarCollapsed', 'settings'],
     },
   },
 )

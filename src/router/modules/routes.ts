@@ -1,4 +1,4 @@
-import type { AppRouteRecordRaw } from '@types/router'
+import type { AppRouteRecordRaw } from '@model/router'
 
 // 常量路由（无需权限）
 export const constantRoutes: AppRouteRecordRaw[] = [

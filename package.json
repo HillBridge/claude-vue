@@ -17,7 +17,7 @@
     "lint:check": "NODE_ENV=production eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "type-check": "vue-tsc --noEmit",
+    "type-check": "vue-tsc -b",
     "test:unit": "vitest run",
     "test:unit:watch": "vitest",
     "test:coverage": "vitest run --coverage",

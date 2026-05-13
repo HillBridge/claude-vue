@@ -20,6 +20,7 @@ const { form, errors, submitting, validate } = useForm(
 )
 
 const redirectPath = computed(() => (route.query.redirect as string) || '/')
+const appTitle = import.meta.env.VITE_APP_TITLE
 
 async function handleLogin() {
   if (!validate()) return
@@ -38,7 +39,7 @@ async function handleLogin() {
   <div class="login-page abs-center min-h-screen bg-[var(--color-bg-layout)]">
     <div class="login-card card w-96 p-8">
       <h1 class="text-2xl font-bold text-center mb-8">
-        {{ $env?.VITE_APP_TITLE ?? '系统登录' }}
+        {{ appTitle ?? '系统登录' }}
       </h1>
 
       <form @submit.prevent="handleLogin">

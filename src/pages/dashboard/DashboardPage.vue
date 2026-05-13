@@ -1,20 +1,12 @@
 <script setup lang="ts">
 defineOptions({ name: 'DashboardPage' })
-</script>
 
-<script lang="ts">
 const statCards = [
   { title: '总用户数', value: '12,450', icon: 'i-lucide-users', color: 'var(--primary-color)' },
   { title: '今日访问', value: '3,218', icon: 'i-lucide-eye', color: 'var(--success-color)' },
   { title: '待处理', value: '42', icon: 'i-lucide-clock', color: 'var(--warning-color)' },
   { title: '异常告警', value: '3', icon: 'i-lucide-alert-circle', color: 'var(--error-color)' },
 ]
-
-export default {
-  setup() {
-    return { statCards }
-  },
-}
 </script>
 
 <template>
@@ -27,7 +19,7 @@ export default {
             <p class="text-secondary text-sm">{{ card.title }}</p>
             <p class="text-2xl font-bold mt-1">{{ card.value }}</p>
           </div>
-          <div :class="[card.icon, 'text-3xl', `text-[${card.color}]`]" />
+          <div :class="[card.icon, 'text-3xl']" :style="{ color: card.color }" />
         </div>
       </div>
     </div>

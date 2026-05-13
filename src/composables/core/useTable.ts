@@ -1,4 +1,4 @@
-import type { ApiResponse, PageParams, PageResult } from '@types/api'
+import type { ApiResponse, PageParams, PageResult } from '@model/api'
 import type { Ref } from 'vue'
 import { computed, ref, watch } from 'vue'
 

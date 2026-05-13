@@ -1,4 +1,4 @@
-import type { ApiResponse, PageResult } from '@types/api'
+import type { ApiResponse, PageResult } from '@model/api'
 import type { AxiosResponse } from 'axios'
 
 /**

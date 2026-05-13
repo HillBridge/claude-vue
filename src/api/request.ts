@@ -1,6 +1,6 @@
+import type { ApiResponse } from '@model/api'
 import { router } from '@router/index'
 import { useAuthStoreOutside } from '@stores/modules/auth'
-import type { ApiResponse } from '@types/api'
 import { logger } from '@utils/logger'
 import type {
   AxiosInstance,
@@ -11,6 +11,15 @@ import type {
 import axios from 'axios'
 import axiosRetry from 'axios-retry'
 import { BusinessError, RequestError } from './errors'
+
+declare module 'axios' {
+  interface AxiosRequestConfig {
+    withAuth?: boolean
+  }
+  interface InternalAxiosRequestConfig {
+    withAuth?: boolean
+  }
+}
 
 export interface RequestConfig extends AxiosRequestConfig {
   // 是否显示全局 loading

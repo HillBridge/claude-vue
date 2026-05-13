@@ -57,7 +57,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         '@plugins': resolve(__dirname, 'src/plugins'),
         '@router': resolve(__dirname, 'src/router'),
         '@stores': resolve(__dirname, 'src/stores'),
-        '@types': resolve(__dirname, 'src/types'),
+        '@model': resolve(__dirname, 'src/types'),
         '@utils': resolve(__dirname, 'src/utils'),
       },
     },

@@ -1,5 +1,5 @@
 import { authApi } from '@api/modules/auth'
-import type { UserInfo } from '@types/store'
+import type { UserInfo } from '@model/store'
 import { storage } from '@utils/storage'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
@@ -82,23 +82,6 @@ export const useAuthStore = defineStore(
       }
     }
 
-    // 注册实例供非组件上下文使用
-    _authStoreInstance = {
-      accessToken,
-      refreshToken,
-      user,
-      loading,
-      isAuthenticated,
-      hasRole,
-      hasPermission,
-      hasAnyPermission,
-      hasAllPermissions,
-      login,
-      logout,
-      fetchUserInfo,
-      refreshAccessToken,
-    } as ReturnType<typeof useAuthStore>
-
     return {
       accessToken,
       refreshToken,
@@ -117,7 +100,7 @@ export const useAuthStore = defineStore(
   },
   {
     persist: {
-      paths: ['accessToken', 'refreshToken'],
+      pick: ['accessToken', 'refreshToken'],
     },
   },
 )

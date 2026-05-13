@@ -1,10 +1,12 @@
 import type { LoginParams } from '@api/modules/auth'
 import { authApi } from '@api/modules/auth'
 import { authKeys } from '@api/queryKeys'
+import type { ApiResponse, PageParams, PageResult } from '@model/api'
+import type { UserInfo } from '@model/store'
 import { useAuthStore } from '@stores/index'
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
-import type { PageParams } from '@types/api'
 import { unwrap, unwrapPage } from '@utils/queryUtils'
+import type { AxiosResponse } from 'axios'
 import type { MaybeRef } from 'vue'
 import { computed, toValue } from 'vue'
 
@@ -19,7 +21,7 @@ import { computed, toValue } from 'vue'
 export function useUserInfoQuery() {
   const authStore = useAuthStore()
 
-  return useQuery({
+  return useQuery<AxiosResponse<ApiResponse<UserInfo>>, Error, UserInfo>({
     queryKey: authKeys.userInfo(),
     queryFn: () => authApi.getUserInfo(),
     select: unwrap,
@@ -34,7 +36,7 @@ export function useUserInfoQuery() {
  * keepPreviousData 让翻页时保留上一页数据，避免 loading 闪烁。
  */
 export function useUserListQuery(params: MaybeRef<PageParams>) {
-  return useQuery({
+  return useQuery<AxiosResponse<ApiResponse<PageResult<UserInfo>>>, Error, PageResult<UserInfo>>({
     queryKey: computed(() => authKeys.userList(toValue(params))),
     queryFn: () => authApi.getUserList(toValue(params)),
     select: unwrapPage,

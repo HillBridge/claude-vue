@@ -41,6 +41,8 @@ function reportError(error: Error, context: Record<string, unknown>) {
     logger.error('[Production Error]', { message: error.message, ...context })
   }
 }
+
+const isDev = !import.meta.env.PROD
 </script>
 
 <template>
@@ -49,7 +51,7 @@ function reportError(error: Error, context: Record<string, unknown>) {
       <div class="i-lucide-alert-triangle text-4xl text-[var(--error-color)] mb-4" />
       <h2 class="text-xl font-semibold mb-2">页面出现了错误</h2>
       <p class="text-secondary mb-4">{{ fallback ?? errorMessage }}</p>
-      <details v-if="!$env?.PROD" class="error-details">
+      <details v-if="isDev" class="error-details">
         <summary>错误详情（开发模式）</summary>
         <pre>{{ errorStack }}</pre>
       </details>

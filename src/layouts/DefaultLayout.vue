@@ -3,6 +3,7 @@ import { useAppStore } from '@stores/index'
 import { RouterView } from 'vue-router'
 
 const appStore = useAppStore()
+const appTitle = import.meta.env.VITE_APP_TITLE
 </script>
 
 <template>
@@ -12,7 +13,7 @@ const appStore = useAppStore()
       <div class="sidebar-logo">
         <span class="i-lucide-zap text-xl text-[var(--primary-color)]" />
         <span v-if="!appStore.sidebarCollapsed" class="font-semibold ml-2">
-          {{ $env?.VITE_APP_TITLE ?? 'Admin' }}
+          {{ appTitle ?? 'Admin' }}
         </span>
       </div>
       <nav class="sidebar-nav">
